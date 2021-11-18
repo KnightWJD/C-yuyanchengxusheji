@@ -11,47 +11,44 @@
 
 int main()
 {
-    int n,i,j,k=1,prerow,precol;
-    int arr[100][100] = {0};
-    printf("请输入n(奇数)的值\n");
-gotoA:
+    int Array_MagicCube[100][100] = {0},i,j,n,row,col,PreRow,PreCol;
+    printf("请输入n(100以内的奇数)的值:  ");
+GotoOne:
     scanf("%d",&n);
-    if(n%2 == 0 || n>100)
+    if(n>100 || n<=0 || n%2 == 0)
     {
-        printf("您输入的是偶数或者大于一百,请重新输入:\n");
-        goto gotoA;
+        printf("您输入的数据有误,请重新输入: ");
+        goto GotoOne;
     }
-
-    int row = 0;
-    int col = n/2;
-    arr[row][col]=1;
+    row = 0;
+    col = n/2;
+    Array_MagicCube[row][col] = 1;
     for(i=2;i<=n*n;i++)
     {
         row--;
         col++;
-        if(row<0)
+        if(row < 0)
         {
             row = n-1;
         }
-        if(col>=n)
+        if(col > n-1)
         {
             col = 0;
         }
-        if(arr[row][col] != 0)
+        if(Array_MagicCube[row][col] != 0)
         {
-            row = prerow+1;
-            col = precol;
+            row = PreRow+1;
+            col = PreCol;
         }
-        arr[row][col]=i;
-        prerow = row;
-        precol = col;
+        PreRow = row;
+        PreCol = col;
+        Array_MagicCube[row][col]=i;
     }
-    printf("\n");
     for(i=0;i<n;i++)
     {
         for(j=0;j<n;j++)
         {
-              printf("%-4d ",arr[i][j]);
+            printf("%-4d ",Array_MagicCube[i][j]);
         }
         printf("\n");
     }
