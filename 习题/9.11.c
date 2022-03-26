@@ -53,9 +53,7 @@ void compare(stu* a,stu* b)
 
                 free(pa);
 
-                pa = a->next;
-                pb = b->next
-                ;
+                pa =preva->next;
             }
             else
             {
